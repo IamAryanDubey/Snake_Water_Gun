@@ -1,7 +1,7 @@
 import random
 computer = random.randint(0,2)
 
-def winner(compter,player):
+def winner(computer,player):
   if computer == player
     print("Its a draw.")
     return 0
