@@ -1,32 +1,42 @@
 import random
-computer = random.randint(0,2)
 
-def winner(computer,player):
-  if computer == player
-    print("Its a draw.")
-    return 0
-  elif(comp == 0 and user ==1):
-    print("Computer wins.")
-    return -1
+def winner(computer, player):
+    if computer == player:
+        print("It's a draw.")
+        return 0
+    elif (computer == 0 and player == 1) or (computer == 1 and player == 2) or (computer == 2 and player == 0):
+        print("You win!")
+        return 1
+    else:
+        print("Computer wins.")
+        return -1
+
+player_score = 0
+computer_score = 0
+
+for round in range(10):
+    computer = random.randint(0, 2)
+    player = int(input("Enter 0 for snake, 1 for water, and 2 for gun: "))
+
+    score = winner(computer, player)
     
-  elif(comp == 1 and user ==2):
-    print("Computer wins.")
-    return -1
-    
-  elif(comp == 2 and user == 0):
-    print("Computer wins.")
-    return -1
+    print("You:", player)
+    print("Computer:", computer)
 
-player = int(input("Enter 0 for snake, 1 for water and 2 for gun:"))
+    if score == 1:
+        player_score += 1
+    elif score == -1:
+        computer_score += 1
 
-score = winner(computer,player)
+    print(f"Score after round {round + 1}: Player {player_score} & Computer {computer_score}\n")
 
-print("You:", player)
-print("Computer:",computer)
+print("Final Score:")
+print(f"Player: {player_score}")
+print(f"Computer: {computer_score}")
 
-if(score == 0):
-  print("Its a draw")
-elif (score == -1):
-  print("You Lose")
+if player_score > computer_score:
+    print("You won the game!")
+elif player_score < computer_score:
+    print("Computer won the game!")
 else:
-  print("You Won")
+    print("The game is a draw!")
